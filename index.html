@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>颜值检测器</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f2f5;
+        }
+        
+        .container {
+            width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .title {
+            text-align: center;
+            background-color: #c8e1ff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            background-color: #7ec6ff;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #5fb0ff;
+        }
+        
+        #result-container {
+            display: none;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .system-detected {
+            background-color: #7ec6ff;
+            color: white;
+            padding: 8px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .score {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .comparison {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="form-container">
+        <div class="title">颜值检测器</div>
+        
+        <div class="form-content">
+            <p style="text-align: center;">请输入信息：</p>
+            
+            <div class="form-group">
+                <label for="gender">你的性别是：</label>
+                <select id="gender">
+                    <option value="male">男</option>
+                    <option value="female">女</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="height">你的身高是：</label>
+                <input type="text" id="height" placeholder="请输入身高">
+            </div>
+            
+            <div class="button-group">
+                <button id="detect-btn">开始检测</button>
+                <button id="reset-btn">重置</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container" id="result-container">
+        <div class="title">颜值检测器</div>
+        
+        <div class="result-content">
+            <div class="system-detected">系统检测到！</div>
+            
+            <div class="score">你的颜值是100分！</div>
+            <div class="comparison" id="comparison-text"></div>
+        </div>
+        
+        <div class="button-group">
+            <button id="back-btn">重测</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const formContainer = document.getElementById('form-container');
+            const resultContainer = document.getElementById('result-container');
+            const detectBtn = document.getElementById('detect-btn');
+            const resetBtn = document.getElementById('reset-btn');
+            const backBtn = document.getElementById('back-btn');
+            const genderSelect = document.getElementById('gender');
+            const heightInput = document.getElementById('height');
+            const comparisonText = document.getElementById('comparison-text');
+            
+            // 开始检测按钮
+            detectBtn.addEventListener('click', function() {
+                const gender = genderSelect.value;
+                
+                // 根据性别设置不同的比较文本
+                if (gender === 'female') {
+                    comparisonText.textContent = '颜值已经打败范冰冰！';
+                } else {
+                    comparisonText.textContent = '颜值已经打败彭于晏！';
+                }
+                
+                // 显示结果，隐藏表单
+                formContainer.style.display = 'none';
+                resultContainer.style.display = 'block';
+            });
+            
+            // 重置按钮
+            resetBtn.addEventListener('click', function() {
+                genderSelect.value = 'male';
+                heightInput.value = '';
+            });
+            
+            // 返回按钮
+            backBtn.addEventListener('click', function() {
+                resultContainer.style.display = 'none';
+                formContainer.style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>
