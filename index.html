@@ -109,7 +109,7 @@
             <p style="text-align: center;">请输入信息：</p>
             
             <div class="form-group">
-                <label for="gender">你的性别是：</label>
+                <label for="gender">您的性别是：</label>
                 <select id="gender">
                     <option value="male">男</option>
                     <option value="female">女</option>
@@ -117,7 +117,7 @@
             </div>
             
             <div class="form-group">
-                <label for="height">你的身高是：</label>
+                <label for="height">您的身高是：</label>
                 <input type="text" id="height" placeholder="请输入身高">
             </div>
             
@@ -134,7 +134,7 @@
         <div class="result-content">
             <div class="system-detected">系统检测到！</div>
             
-            <div class="score">你的颜值是100分！</div>
+            <div class="score">您的颜值是100分！</div>
             <div class="comparison" id="comparison-text"></div>
         </div>
         
@@ -160,9 +160,9 @@
                 
                 // 根据性别设置不同的比较文本
                 if (gender === 'female') {
-                    comparisonText.textContent = '颜值已经打败范冰冰！登顶全球颜值排行榜 榜首';
+                    comparisonText.textContent = '颜值已经打败范冰冰！登顶全球颜值排行榜 榜首！';
                 } else {
-                    comparisonText.textContent = '颜值已经打败彭于晏！登顶全球颜值排行榜 榜首';
+                    comparisonText.textContent = '颜值已经打败彭于晏！登顶全球颜值排行榜 榜首！';
                 }
                 
                 // 显示结果，隐藏表单
